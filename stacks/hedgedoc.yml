@@ -2,7 +2,7 @@
 
 services:
   app:
-    image: linuxserver/hedgedoc:${VERSION:-1.10.0}
+    image: linuxserver/hedgedoc:${VERSION:-1.10.5}
     volumes:
       - ${VOLUME_PATH}uploads:/home/hackmd/app/public/uploads
     environment:
@@ -13,6 +13,7 @@ services:
       - CMD_DEFAULT_PERMISSION=${CMD_DEFAULT_PERMISSION:-editable}
       - CMD_SESSION_SECRET=${CMD_SESSION_SECRET:-myhedgedocs3cr3t}
       - CMD_DB_URL=postgres://hedgedoc:myp@ssw0rd@postgres:5432/hedgedoc
+      - CMD_CSP_ENABLE=false
     deploy:
       labels:
         - traefik.enable=true
